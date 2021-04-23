@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body class="parallax" style="font-family: 'Roboto', sans-serif; background-color: rgb(49, 49, 49); color: rgb(212, 212, 212);">
+    <div align="center" style="background-color: rgb(90, 45, 45);border-radius: 5px;border: solid brown">
+        <br>
+        <h1 onclick="window.location='index.html'">Cyber Assignment 1 - Lachlan Korodaj</h1>
+        <p>Click The Title To Go Home</p>
+        <h3>We need more cyber security awareness</h3>
+        <marquee>Hello <span class="glitch">assignment</span> marker! Welcome to my <span
+                class="glitch">assignment</span>. Can you find all 2 easter eggs?</marquee>
+        <br>
+        <br>
+    </div>
+    <hr>
+    <div id="main"
+        style="position: absolute;left:25%;width: 50%;background-color: rgb(68, 68, 68); border: solid 10px rgb(68, 68, 68) ;border-radius: 5px;padding: 10px;">
+        <div style="background-color: rgb(146, 146, 146);
+		border: solid 5px rgb(146, 68, 68);
+		border-radius: 5px;
+		padding: 10px;color:black;">What is the worst-case scenario in theory? And in real life? Can you explain using
+            examples?</div>
+        <p>
+            The worst case scenario is something like 1984. Some company or entity supresses the people's knowledge of cybersec and has complete
+            control over their lives with their lack of knowledge and the people cannot rebel because they do not know that the suppressor
+            is even doing anything.
+        </p>
+        <div style="background-color: rgb(146, 146, 146);
+		border: solid 5px rgb(146, 68, 68);
+		border-radius: 5px;
+		padding: 10px;color:black;">What are the best-case scenarios? Explain using examples.</div>
+        <p>
+            The best case scenario is already being enacted. It is about people being educated about cybersecurity in school and
+            in the workplace. In most workplaces there is a cybersecurity policy and annual or monthly cybersecurity checkup meetings.
+            This is important because some big businesses are large targets and they can be very vulnerable if no security policy
+            is in place. There are also many companies whose job is to try and hack into businesses to test and patch security. 
+            Police are also coming into ACT public schools to talk about cybersecurity and there are a plethora of YouTube channels educating people about cybersecurity. 
+        </p>
+    </div>
+    <script>
+        function zalgify(text, intensity) { // i just reused this lol
+            let upperDiacritics = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310',
+                    '\u0352',
+                    '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343', '\u0344', '\u034a', '\u034b',
+                    '\u034c', '\u0303', '\u0302', '\u030c', '\u0350', '\u0300', '\u0301', '\u030b', '\u030f', '\u0312',
+                    '\u0313', '\u0314', '\u033d', '\u0309', '\u0363', '\u0364', '\u0365', '\u0366', '\u0367', '\u0368',
+                    '\u0369', '\u036a', '\u036b', '\u036c', '\u036d', '\u036e', '\u036f', '\u033e', '\u035b', '\u0346',
+                    '\u031a'
+                ],
+                lowerDiacritics = ['\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f',
+                    '\u0320',
+                    '\u0324', '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c', '\u032d', '\u032e', '\u032f',
+                    '\u0330', '\u0331', '\u0332', '\u0333', '\u0339', '\u033a', '\u033b', '\u033c', '\u0345', '\u0347',
+                    '\u0348', '\u0349', '\u034d', '\u034e', '\u0353', '\u0354', '\u0355', '\u0356', '\u0359', '\u035a',
+                    '\u0323'
+                ],
+                midDiacritics = ['\u0315', '\u031b', '\u0340', '\u0341', '\u0358', '\u0321', '\u0322', '\u0327',
+                    '\u0328',
+                    '\u0334', '\u0335', '\u0336', '\u034f', '\u035c', '\u035d', '\u035e', '\u035f', '\u0360', '\u0362',
+                    '\u0338', '\u0337', '\u0361', '\u0489'
+                ],
+                output = '',
+                i = text.length;
+            while (i--) {
+                let newChar = text[i];
+                if (intensity < 1) {
+                    if (Math.floor(Math.random() * 1 / intensity) === 0)
+                        newChar += upperDiacritics[Math.floor(Math.random() * upperDiacritics.length)];
+                    if (Math.floor(Math.random() * 1 / intensity) === 0)
+                        newChar += lowerDiacritics[Math.floor(Math.random() * lowerDiacritics.length)];
+                } else {
+                    let midDiacriticsCopy = midDiacritics.join(',').split(',');
+                    for (let j = 0; j < intensity; j++)
+                        newChar += upperDiacritics[Math.floor(Math.random() * upperDiacritics.length)] +
+                        lowerDiacritics[Math
+                            .floor(Math.random() * lowerDiacritics.length)];
+                    for (let j = 0; j < intensity / 4 && j < midDiacritics.length; j++)
+                        newChar += midDiacriticsCopy.splice(Math.floor(Math.random() * midDiacriticsCopy.length), 1);
+                }
+                output = newChar + output;
+            }
+            return output;
+        }
+        setInterval(() => { // this uses .textContent because it doesn't force a reflow and kill the page because of a ton of forced reflows lol
+            document.querySelectorAll(".glitch").forEach((a) => {
+                a.textContent =
+                    `${zalgify("assignment",10)} (words: ${document.querySelector("#main").textContent.split(" ").length})`
+            });
+        }, 10)
+        document.querySelector("#secret").onmouseover = function () {
+            alert(
+                "You have discovered an easter egg! There are also many fake/scam antiviruses that have funny songs. Protegent Antivirus is a good example"
+                );
+            window.open("https://www.youtube.com/watch?v=PIp06sdFHLM");
+        }
+        document.querySelector("#secret2").onmouseover = function () {
+            alert("You have discovered another easter egg! Alice and Bob are pretty famous!");
+            window.open("https://en.wikipedia.org/wiki/Alice_and_Bob");
+        }
+    </script>
+</body>
+
+</html>
