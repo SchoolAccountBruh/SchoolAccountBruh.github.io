@@ -89,7 +89,7 @@
         setInterval(() => { // this uses .textContent because it doesn't force a reflow and kill the page because of a ton of forced reflows lol
             document.querySelectorAll(".glitch").forEach((a) => {
                 a.textContent =
-                    `${zalgify("assignment",10)} (words: ${document.querySelector("#main").textContent.split(" ").length})`
+                    `${zalgify("assignment",10)}`
             });
         }, 10)
         document.querySelector("#secret").onmouseover = function () {
